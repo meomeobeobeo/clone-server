@@ -35,7 +35,11 @@ module.exports = {
     issues : {
       type: "ref",
       defaultsTo:[]
-    }
+    },
+    admins : {
+      type: "ref",
+      defaultsTo:[]
+    },
 
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

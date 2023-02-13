@@ -33,9 +33,10 @@ module.exports.routes = {
 
 
   //projects
-  'GET /projects' : 'ProjectsController.getAllProjects',
+  'GET /projects/:currentUser' : 'ProjectsController.getAllProjectsHaveAdminId',
   'POST /projects' : 'ProjectsController.createProject',
   'PATCH /projects/update' : 'ProjectsController.updateProject',
+  'GET /projects/detail/:id' : 'ProjectsController.getProjectById',
 
 
   //issues 

@@ -15,7 +15,9 @@ module.exports = {
     },
     type: {
       type: 'string',
-      required: true
+      isIn : ['task','story','bug'],
+      defaultsTo: 'task'
+
     },
     status:{
       type: 'string',

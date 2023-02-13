@@ -21,7 +21,7 @@ module.exports.policies = {
   // '*' : 'authorization',
   '*': 'cors',
   ProjectsController : {
-    // '*': 'authorization',
+    '*': 'authorization',
 
   },
   IssuesController : {

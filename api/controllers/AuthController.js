@@ -10,6 +10,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 module.exports = {
   async signIn(req, res) {
+    console.log(req.body)
     try {
       const { email, password } = req.body;
       
@@ -44,6 +45,7 @@ module.exports = {
     }
   },
   async signUp(req, res) {
+    console.log(req.body)
     try {
       const { email, name } = req.body;
       const existingEmail = await Users.findOne({ email: email });
@@ -60,12 +62,14 @@ module.exports = {
           "SIGN UP SUCCESS.",
           `your account is now active\nemail : ${email} \npassword:${password}`
         );
-
+          console.log("user create success.")
         res.json("user create success.");
       } else {
+        console.log("user create success.")
         res.json("user created...");
       }
     } catch (error) {
+      console.log(error);
       res.json(error);
     }
   },
