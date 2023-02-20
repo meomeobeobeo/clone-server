@@ -8,7 +8,7 @@
 module.exports = {
   createNewIssue: async function (req, res) {
     try {
-      const { title, type, priority } = req.body;
+      const { title, type, priority , status , userCreateId , description , reporterId ,  assigneesId  } = req.body;
 
       const projectId = req.params.project_id;
       if (!projectId) {
@@ -19,6 +19,11 @@ module.exports = {
         type: type,
         priority: priority,
         project_id: projectId,
+        status : status,
+        userCreateId : userCreateId,
+        description : description,
+        reporterId : reporterId,
+        assigneesId : [...assigneesId]
       }).fetch();
 
       const currentProject = await Projects.findOne({ id: projectId });
@@ -31,14 +36,15 @@ module.exports = {
 
       res.ok({
         message: "create new issue success ",
-        newissues: newIssue,
-        updatedProject: updatedProject,
+        newIssues: newIssue,
+        updatedProject: updatedProject[0],
       });
     } catch (error) {
       console.error(error);
       res.status(500).send(error);
     }
   },
+
   deleteIssue: async function (req, res) {
     try {
       const issueId = req.query.issue_id;

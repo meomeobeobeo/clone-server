@@ -28,6 +28,7 @@ module.exports.routes = {
 
   //user
   'PATCH /users/changeInfo' : "UsersController.changePassword",
+  'GET /users/filter/:searchText':'UsersController.userSearchByName',
 
   
 
@@ -37,6 +38,7 @@ module.exports.routes = {
   'POST /projects' : 'ProjectsController.createProject',
   'PATCH /projects/update' : 'ProjectsController.updateProject',
   'GET /projects/detail/:id' : 'ProjectsController.getProjectById',
+  'PATCH /projects/addUser' : 'ProjectsController.addUserToProject',
 
 
   //issues 

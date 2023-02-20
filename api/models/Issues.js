@@ -32,7 +32,29 @@ module.exports = {
     project_id :{
       type : 'string',
       required: true,
+    },
+    userCreateId : {
+      type : 'string',
+      required: true,
+    },
+    reporterId : {
+      type: 'string',
+    },
+    description : {
+      type: 'string',
+    },
+    assigneesId : {
+      type :'ref',
+      defaultsTo: []
+    },
+    expireTime : {
+      type :'string',
+    },
+    isExpire : {
+      type :'boolean',
+      defaultsTo: false
     }
+    
 
 
 
