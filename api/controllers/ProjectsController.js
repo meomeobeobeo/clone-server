@@ -16,6 +16,7 @@ module.exports = {
         description: description,
         category: category,
         admins: [userCreateId],
+        users:[userCreateId]
       }).fetch();
       res.json(data);
     } catch (error) {
@@ -39,31 +40,58 @@ module.exports = {
         return {
           name: project.name,
           id: project.id,
+          url:project.url,
           createdAt: project.createdAt,
           updatedAt: project.updatedAt,
         };
       });
       console.log(result);
-
       res.ok(result);
     } catch (error) {
       console.log(error);
       res.status(500).send({ error: error });
     }
   },
+  getListProjectCurrentUserIsWorkIn: async function (req, res) {
+    try {
+      const currentUser = req.params.currentUser;
+      const data = await Projects.find();
+      const filter = data?.filter((project) => {
+        const users = project.users;
+        if (users.includes(currentUser)) {
+          return true;
+        }
+        return false;
+      });
+      const result = filter.map((project) => {
+        return {
+          name: project.name,
+          id: project.id,
+          description: project.description,
+          url:project.url,
+          category:project.category,
+          createdAt: project.createdAt,
+          updatedAt: project.updatedAt,
+        };
+      });
+      res.ok(result)
+    } catch (error) {}
+  },
 
   updateProject: async function (req, res) {
     try {
       const { name, url, description, category } = req.body;
 
-      await Projects.update({ id: req.query.id }).set({
+       const newProject = await Projects.update({ id: req.query.id }).set({
         name: name,
         url: url,
         description: description,
         category: category,
-      });
-      res.ok("update success.....");
+      }).fetch();
+      
+      res.ok(newProject[0]);
     } catch (e) {
+      console.log(e);
       res.status(500).json("Server error......");
     }
   },
@@ -75,7 +103,7 @@ module.exports = {
       const projects = await Projects.findOne({ id: id });
       const listIssesId = projects.issues;
       const listUserId = projects.users;
-      const issuesData = await Issues.find({ id: { in: listIssesId } });
+      const issuesData = await Issues.find({ id: { in: listIssesId } }).sort('createdAt DESC');;
 
       const userListInfor = await Users.find({ id: { in: listUserId } });
       const userListResult = userListInfor.map((user) => {

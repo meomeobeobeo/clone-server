@@ -29,12 +29,15 @@ module.exports.routes = {
   //user
   'PATCH /users/changeInfo' : "UsersController.changePassword",
   'GET /users/filter/:searchText':'UsersController.userSearchByName',
+  'POSt /users/createNewUser' : 'UsersController.createNewUser',
 
   
 
 
   //projects
-  'GET /projects/:currentUser' : 'ProjectsController.getAllProjectsHaveAdminId',
+  // 'GET /projects/:currentUser' : 'ProjectsController.getAllProjectsHaveAdminId',
+  'GET /projects/:currentUser' : 'ProjectsController.getListProjectCurrentUserIsWorkIn',
+
   'POST /projects' : 'ProjectsController.createProject',
   'PATCH /projects/update' : 'ProjectsController.updateProject',
   'GET /projects/detail/:id' : 'ProjectsController.getProjectById',
@@ -45,8 +48,8 @@ module.exports.routes = {
   'POST /issues/create/:project_id' : 'IssuesController.createNewIssue',
   'DELETE /issues' : 'IssuesController.deleteIssue',
   'PATCH /issues/:id' : 'IssuesController.updateIssue',
-  'GET /issues/:id' : 'IssuesController.'
- 
+  'GET /issues/filter' : 'IssuesController.filterIssue'
+  
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

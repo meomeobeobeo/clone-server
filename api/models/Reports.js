@@ -1,5 +1,5 @@
 /**
- * Issues.js
+ * Reports.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -8,55 +8,22 @@
 module.exports = {
 
   attributes: {
-
     title : {
-      type: 'string',
+      type: "string",
+      required: true
+
+    },
+    type : {
+      type : "string",
       required: true
     },
-    type: {
-      type: 'string',
-      isIn : ['task','story','bug'],
-      defaultsTo: 'task'
-
-    },
-    status:{
-      type: 'string',
-      isIn : ['backlog','done','selected','inprogress'],
-      defaultsTo: 'backlog'
-    },
-    priority :{
+    priority : {
       type : 'string',
-      required: true,
-      isIn : ['1','2','3','4','5'],
+      required: true
     },
-    project_id :{
-      type : 'string',
-      required: true,
-    },
-    userCreateId : {
-      type : 'string',
-      required: true,
-    },
-    reporterId : {
-      type: 'string',
-    },
-    description : {
-      type: 'string',
-    },
-    assigneesId : {
-      type :'ref',
-      defaultsTo: []
-    },
-    expireTime : {
-      type :'ref',
-      defaultsTo: (new Date()).setHours((new Date()).getHours() +2 ),
-    },
-    isExpire : {
-      type :'boolean',
-      defaultsTo: false
+    content : {
+      type : "string",
     }
-    
-
 
 
 
@@ -68,6 +35,7 @@ module.exports = {
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
+
 
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
