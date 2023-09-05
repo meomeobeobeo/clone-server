@@ -7,14 +7,14 @@ module.exports = {
       port: 587,
       secure: false,
       auth: {
-        user: "bookingappui@gmail.com",
-        pass: "iuxkwawmmazujytg",
+        user: "meomeoerptest@gmail.com",
+        pass: "znrjmwgnlfjrhhtj",
       },
     });
 
     // Define the email options
     let mailOptions = {
-      from: '"Your Name" <bookingappui@gmail.com>',
+      from: '"Project application ',
       to: to,
       subject: subject,
       text: message,

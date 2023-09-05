@@ -29,7 +29,8 @@ module.exports.routes = {
   //user
   'PATCH /users/changeInfo' : "UsersController.changePassword",
   'GET /users/filter/:searchText':'UsersController.userSearchByName',
-  'POSt /users/createNewUser' : 'UsersController.createNewUser',
+  'POST /users/createNewUser' : 'UsersController.createNewUser',
+  
 
   
 
